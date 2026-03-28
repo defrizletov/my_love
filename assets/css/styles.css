@@ -1,0 +1,499 @@
+:root {
+    --world-brightness: 0.5;
+}
+
+html, body {
+    width: 100vw;
+    height: 100dvh;
+    overflow: hidden;
+    position: fixed;
+    inset: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    
+    image-rendering: -moz-crisp-edges !important;
+    image-rendering: -webkit-optimize-contrast !important;
+    image-rendering: pixelated !important;
+
+    user-drag: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    -ms-touch-action: none;
+    touch-action: none;
+}
+
+img {
+    pointer-events: none !important;
+}
+
+.hidden {
+    opacity: 0 !important;
+    pointer-events: none !important;
+
+    will-change: opacity;
+}
+
+.ui .loading {
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading .loader {
+    display: flex;
+    gap: 2rem;
+
+    align-content: flex-end;
+
+    transform-style: preserve-3d;
+    perspective: 1000;
+}
+
+.loading .loader span {
+    font-family: 'Tiny5', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+    color: black;
+    -webkit-text-fill-color: unset;
+    align-content: center;
+    z-index: 2;
+}
+
+.loading .loader > div {
+    width: 3rem;
+    aspect-ratio: 1/1;
+    background: linear-gradient(90deg, #ff8cf0, #fff, #ff8cf0);
+    background-size: 200% 100%;
+
+    animation: loading 4s ease-in-out infinite, rotating 8s linear infinite;
+
+    will-change: transform;
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    will-change: transform;
+}
+
+.main .layer {
+    filter: brightness(var(--world-brightness));
+}
+
+.layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+}
+
+.ui {
+    pointer-events: none;
+    color: #fff;
+    font-family: 'Tiny5';
+    z-index: 9999;
+
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+
+.ui > * {
+    transition: all 0.7s ease-in-out;
+}
+
+.ui h1, .ui h2 {
+    position: absolute;
+    font-weight: 400;
+    background: inherit;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.ui h1 {
+    top: 1.5rem;
+    left: 2.5rem;
+}
+
+.ui h2 {
+    text-align: right;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    bottom: 1rem;
+    right: 2rem;
+}
+
+.ui span {
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.ui h1 {
+    background: linear-gradient(90deg, #ff0000, #fff, #ff8cf0, #ff0000);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: flow 8s linear infinite;
+    
+    color: #fff;
+    -webkit-text-fill-color: #fff;
+}
+
+.ui h2 {
+    background: linear-gradient(90deg, #000, #fff, #000);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: flow 8s linear infinite;
+}
+
+.ui h1 {
+    color: #fff;
+    -webkit-text-fill-color: #fff;
+}
+
+.ui .start {
+    appearance: none;
+    background: none;
+    outline: none;
+    border: none;
+
+    height: 20rem;
+    cursor: pointer;
+
+    pointer-events: auto;
+    touch-action: auto;
+
+    position: fixed;
+    left: var(--target-x, 50%);
+    top: var(--target-y, 50%);
+    translate: -50% -50%; 
+    scale: calc(var(--btn-scale, 1) * var(--pulse-factor, 1));
+    
+    transition: left 4.15s ease-in-out, top 4.15s ease-in-out, transform 4.15s ease-in-out, scale 4.15s ease-in-out, filter 0.5s ease-in-out;
+    animation: pulse 4s ease-in-out infinite;
+}
+
+.ui .start img {
+    height: 100%;
+}
+
+.ui .start:hover {
+    filter: drop-shadow(0px 0px 15px pink);
+}
+
+.ui h1, .ui h2 {
+    text-shadow: 0px 0px 15px pink;
+}
+
+.sky {
+    left: 0;
+    top: 0;
+    overflow: hidden;
+}
+
+.sun, .moon {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    width: 2%;
+    aspect-ratio: 1/1;
+    background-color: currentColor;
+    border-radius: 50%;
+    box-shadow: 0px 0px 40px 5px currentColor;
+
+    transition: color 1s ease;
+    will-change: transform, color;
+}
+
+.sun {
+    color: rgb(255, 242, 166);
+}
+
+.moon {
+    color: rgb(218, 218, 218);
+}
+
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.stars * {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    box-shadow: 0px 0px 15px #fff;
+}
+
+.atmosphere {
+    position: absolute;
+    width: 100%;
+    height: 35%;
+    overflow: hidden;
+}
+
+.atmosphere img {
+    position: absolute;
+    width: 100%;
+    top: 0;
+}
+
+.clouds {
+    position: absolute;
+    width: 100%;
+    height: 20%;
+    z-index: 2;
+
+    transition: all 1s ease-in-out;
+    animation: clouds 170s linear infinite;
+}
+
+.mountains {
+    bottom: 5%;
+    height: auto;
+}
+
+.house img {
+    width: 100%;
+    filter: unset;
+    image-rendering: auto !important;
+}
+
+.house .light {
+    position: absolute;
+    width: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    aspect-ratio: 1/1;
+    color: rgb(255, 174, 0);
+    background-color: rgba(255, 174, 0, 0.4);
+    box-shadow: 0px 0px 25px 3px currentColor;
+    border-radius: 50%;
+    filter: brightness(1) !important;
+}
+
+.ground {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    height: min-content;
+}
+
+.hills {
+    height: min-content;
+    bottom: 0;
+}
+
+.all {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.all > * {
+    position: absolute;
+    transform: translateY(-100%);
+}
+
+.ground > img, .hills img, .mountains img {
+    width: 100%;
+    vertical-align: bottom;
+}
+
+.ground > * {
+    position: absolute;
+    bottom: 0;
+}
+
+.ground .all {
+    top: 0;
+    bottom: unset;
+    position: relative;
+}
+
+.bird {
+    position: absolute;
+    height: 3%;
+    aspect-ratio: 1/1;
+}
+
+.bird > div {
+    height: 50%;
+    width: 10%;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform-origin: bottom right;
+    border-radius: 50%;
+
+    animation: swing 0.5s linear infinite;
+}
+
+.bird > div:last-child {
+    animation: swing2 0.5s linear infinite;
+}
+
+.birds {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    transition: all 1s ease-in-out;
+    
+    animation: fly 70s linear infinite, float 10s linear infinite;
+}
+
+.object {
+    position: absolute;
+    display: flex;
+    vertical-align: bottom;
+    will-change: opacity, transform, visibility;
+}
+
+.object img {
+    width: 100%;
+    height: 100%;
+}
+
+.active:hover {
+    pointer-events: auto !important;
+    cursor: pointer;
+    filter: drop-shadow(0 0 5px #fff);
+}
+
+.active > * {
+    transform: translateX(calc(var(--i, 0) * -100%));
+}
+
+.owl {
+    top: 37.5%;
+    left: 33%;
+
+    scale: 0.7;
+    width: 2%;
+}
+
+.lamp {
+    top: 63.75%;
+    left: 16%;
+
+    width: 2%;
+    scale: 0.35;
+}
+
+.light {
+    position: absolute;
+    bottom: 7.5%;
+
+    width: 100%;
+    aspect-ratio: 1/1;
+
+    background-color: #ffc400;
+    border-radius: 50%;
+
+    transition: all 1s ease-in-out;
+    animation: light 4s ease-in-out infinite;
+
+    box-shadow: 0 0 10px 4px #ffc400;
+}
+
+.bat {
+    top: 87.5%;
+    left: 80%;
+
+    scale: 0.7;
+    width: 3%;
+}
+
+.flowers {
+    position: absolute;
+    width: 15%;
+    height: 30%;
+    top: 47.5%;
+    left: 50%;
+    rotate: 30deg;
+}
+
+.flowers > img {
+    position: absolute;
+    aspect-ratio: 1/1;
+}
+
+.river_deep {
+    will-change: opacity, transform, visibility;
+    animation: fadeDeep 1s infinite linear;
+}
+
+.river_deep:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.river_flow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    will-change: opacity, transform, visibility;
+}
+
+.river_flow img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0; 
+    animation: riverAnimation 1s infinite; 
+}
+
+.river_flow img:nth-child(1) { animation-delay: 0.2s; }
+.river_flow img:nth-child(2) { animation-delay: 0.4s; }
+.river_flow img:nth-child(3) { animation-delay: 0.6s; }
+.river_flow img:nth-child(4) { animation-delay: 0.8s; }
+
+.dog {
+    top: 89%;
+    left: 38%;
+
+    width: 5%;
+}
+
+.dog img {
+    visibility: hidden;
+    animation: dogBreath 4s infinite;
+}
+
+.dog img:nth-child(2) { 
+    animation-delay: 2s; 
+}

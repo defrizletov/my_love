@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width,
+    initial-scale=1,
+    maximum-scale=1,
+    minimum-scale=1,
+    user-scalable=no,
+    viewport-fit=cover">
+
+    <title>MY LOVE</title>
+
+    <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="./assets/css/fonts.css">
+    <link rel="stylesheet" href="./assets/css/keyframes.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tiny5&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="layer sky">
+        <div class="sun"></div>
+
+        <div class="stars"></div>
+        <div class="moon"></div>
+    </div>
+
+    <div class="layer main">
+        <div class="layer mountains" data-depth="0.175">
+            <img src="./assets/img/mountains.png" alt="">
+
+            <div class="clouds" style="top:10%">
+                <img src="./assets/img/clouds.png" alt="">
+            </div>
+
+            <div class="clouds" style="top:10%;transform:translateX(100%)">
+                <img src="./assets/img/clouds.png" alt="">
+            </div>
+        </div>
+        
+        <div class="layer hills" data-depth="0.3">
+            <img src="./assets/img/hills.png" alt="">
+            
+            <div class="all"></div>
+
+            <div class="birds"></div>
+        </div>
+
+        <div class="layer atmosphere" data-depth="0.4">
+            <img src="./assets/img/fog.png" alt="">
+        </div>
+        
+        <div class="layer ground" data-depth="0.8">
+            <img src="./assets/img/ground.png" alt="">
+
+            <img class="river_deep" src="./assets/img/river1.png" alt="">
+            <img class="river_deep" src="./assets/img/river2.png" alt="">
+
+            <div class="river_flow">
+                <img src="./assets/img/river3.png" alt="">
+                <img src="./assets/img/river4.png" alt="">
+                <img src="./assets/img/river5.png" alt="">
+                <img src="./assets/img/river6.png" alt="">
+            </div>
+
+            <div class="flowers"></div>
+            <img src="./assets/img/bridge.png" alt="">
+            <img data-name="swing" src="./assets/img/swing.png" alt="">
+            <img src="./assets/img/big_tree.png" alt="">
+            <img data-name="the_love" src="./assets/img/the_love.png" alt="">
+
+            <div class="all">
+                <div class="object active owl">
+                    <img src="./assets/img/owl.png" style="--i:0" alt="">
+                    <img class="hidden" data-name="sleep" src="./assets/img/owl_sleep.png" style="--i:1" alt="">
+                    <img class="hidden" data-name="talk" src="./assets/img/owl_talk.png" style="--i:2" alt="">
+                </div>
+
+                <div class="object lamp">
+                    <img src="./assets/img/lamp.png" alt="">
+
+                    <div class="light"></div>
+                </div>
+
+                <div class="object active bat">
+                    <img src="./assets/img/bat.png" style="--i:0" alt="">
+                    <img class="hidden" data-name="talk" src="./assets/img/bat_active.png" style="--i:1" alt="">
+                </div>
+
+                <div class="object active dog">
+                    <img src="./assets/img/dog.png" style="--i:0" alt="">
+                    <img src="./assets/img/dog_2.png" style="--i:1" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="layer ui">
+        <div class="loading">
+            <div class="loader">
+                <span>загрузка</span>
+                <div></div>
+            </div>
+        </div>
+        
+        <div class="hidden text">
+            <h1><span>васечка</span>, я <span>люблю</span> тебя</h1>
+            
+            <h2>леша</h2>
+        </div>
+
+        <button class="start"><img src="./assets/img/favicon.png" alt=""></button>
+    </div>
+
+    <script src="./assets/js/audio.js"></script>
+    <script src="./assets/js/parallax.js"></script>
+    <script src="./assets/js/index.js"></script>
+</body>
+</html>
